@@ -17,7 +17,7 @@ class CompanyAdmin(admin.ModelAdmin):
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = ("name","position","Company")
     search_fields = ("name","position")
-    list_filter = ("Company",)
+    list_filter = ("Company","name")
 
 
 admin.site.register(Company, CompanyAdmin)

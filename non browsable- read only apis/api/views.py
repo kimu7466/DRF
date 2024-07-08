@@ -33,7 +33,6 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 
 
 
-
 # def home(request):
 #     print("home page requested")
 #     return HttpResponse("<h1> this is home page </h1>")
