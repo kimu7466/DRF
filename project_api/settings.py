@@ -123,3 +123,40 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+###################################################################################
+####### add this section for making only get type api / authenticated users can only perform CRUD #######
+###################################################################################
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    # this DEFAULT_RENDERER_CLASSES is removing borwsable apis and only providing json data on screen,
+    # visit the link given below for more information
+    # https://stackoverflow.com/questions/11898065/how-to-disable-admin-style-browsable-interface-of-django-rest-framework#:~:text=You%20just%20need%20to%20remove,supported%20renderers%20for%20the%20view. 
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+
+}
+
+###################################################################################
+### read this documentation for more information.
+### https://www.django-rest-framework.org/
+
+"""
+If you're intending to use the browsable API you'll probably also want to add REST framework's login and logout views. Add the following to your root urls.py file.
+
+urlpatterns = [
+    ...
+    path('api-auth/', include('rest_framework.urls'))
+]
+Note that the URL path can be whatever you want.
+
+"""
+###################################################################################
